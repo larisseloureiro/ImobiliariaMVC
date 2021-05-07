@@ -1,0 +1,62 @@
+body {
+	margin: 10px, center;
+	background-image: url("/images/logo.png");
+}
+.navbar{
+	margin: 10px, center;
+	border: 1px solid #386641;
+}
+
+.container, .card, .edita{
+	background-color: #EDF2FB;
+	position: relative;
+	
+	display: block;
+	margin: 20px, center;
+	
+	border-radius: 14px;
+	border: 1px solid #386641;
+	font: 16px arial, verdana, helvetica, sans-serif;
+}
+ .btnPosition{
+	position: relative;
+	bottom: 20%;
+	top:-50px;
+	left: 80%;
+ }
+ .btnPositionBairro{
+ position: relative;
+	bottom: 20%;
+	top:-50px;
+	left: 70%;
+ }
+
+.editar {
+	font: 16px arial, verdana, helvetica, sans-serif;
+	border: 8px solid #EDF2FB;
+	
+}
+
+.editar input, select {
+	border: 1px solid black;
+}
+
+
+.alert {
+	margin: 10px;
+}
+
+.img-home {
+	border: 1px solid black;
+	border-radius: 14px;
+	margin: 10px;
+  width: 30%;
+  height: 30%;
+  object-fit: scale-down;
+}
+
+
+
+
+
+

@@ -1,0 +1,108 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{Layout}">
+<head>
+
+<meta charset="UTF-8" />
+<title>Cadastro de Categorias</title>
+</head>
+<body>
+	<section layout:fragment="conteudo">
+
+		<form class="form-horizontal" method="POST" action="/home"
+			th:object="${categoria}">
+			<div layout:insert="MensagemGeral"></div>
+			<div layout:insert="MensagemErro"></div>
+
+			<div class="card-body">
+				<input type="hidden" th:field="*{codigo}" />
+				<div class="container col-8">
+					<div class="row mb-3">
+						<div class="card-header text-center col-12">
+							<b>Nova Categoria</b>
+						</div>
+
+					</div>
+
+					<div class="editar">
+						<div class="row mb-3">
+							<label for="tipo" class="col-sm-2 col-form-label">Categoria</label>
+							<div class="col-sm-6">
+								<input type="text" class="form-control" id="tipo" name="tipo"
+									th:field="*{tipo}"
+									th:classappend="${#fields.hasErrors('tipo')} ? 'form-control is-invalid'">
+							</div>
+						</div>
+
+
+						<div class="row mb-3">
+							<div class="col-sm-offset-2 col-sm-10">
+								<button type="submit" class="btn btn-success">Salvar</button>
+							</div>
+						</div>
+
+
+					</div>
+
+					<div class="form-group col-md-4">
+						<label for="inputState">Show</label> <select id="inputState"
+							class="form-control">
+							<option selected>Choose...</option>
+							<option>...</option>
+						</select>
+					</div>
+
+
+
+					<div class="card card-default">
+						<div class="card-header">
+							<div class="crearfix">
+								<h1 class="card-title stretched-titulo">Pesquisa de
+									Categorias</h1>
+									<a class="btn btn-link" href="/home/pesquisarcategorias"
+					style="position: relative;">Pesquisa de Categorias</a>
+							</div>
+						</div>
+
+
+
+						<div class="table-responsive">
+							<table class="table table-bordered table-striped ">
+								<thead>
+									<tr>
+										<th class="text-center" scope="col">Código</th>
+										<th class="text-center" scope="col">Categoria</th>
+
+										<th scope="col"></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="categoria : ${categorias}">
+										<td class="text-center" th:text="${categoria.codigo}"></td>
+										<td class="text-center" th:text="${categoria.tipo}"></td>
+
+										<td class="text-center"><a class="btn btn-primary"
+											th:href="@{/home/categorias/{codigo}(codigo=${categoria.codigo})}"
+											rel="tooltip" data-placement="top" title="Editar"
+											th:field="*{tipo}"> <img
+												src="/images/pencil-square.svg" height="15">
+										</a> <a class="btn btn-danger" data-toggle="modal"
+											data-target="#confirmacaoExclusaoModal"
+											th:attr="data-codigo=${categoria.codigo}, data-tipo=${categoria.tipo}"
+											rel="tooltip" data-placement="top" title="Excluir"> <img
+												src="/images/trash-fill.svg" height="15">
+										</a></td>
+									
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+		<div layout:insert="Categoria/DialogoConfirmacaoExclusao"></div>
+	</section>
+</body>
+</html>

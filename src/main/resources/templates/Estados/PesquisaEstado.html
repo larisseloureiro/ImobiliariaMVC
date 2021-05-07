@@ -1,0 +1,71 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{Layout}">
+
+<body>
+	<section layout:fragment="conteudo">
+
+		<div class="card-body">
+			<div class="container col-8">
+
+				<div class="row mb-3">
+					<div class="card-header text-center col-12">
+						<b>Estados</b>
+					</div>
+				</div>
+
+
+				<div class="editar">
+					<form method="GET" class="form-horizontal"
+						action="/home/estado/estados" th:object="${filtro}">
+						<div class="form-group">
+							<div class="col-sm-4">
+								<div class="input-group">
+									<input class="form-control"
+										placeholder="Qual estado você está procurando?"
+										autofocus="autofocus" th:field="*{state}"></input> <span
+										class="input-group-btn">
+										<button type="submit" class="btn btn-default">
+											<img src="/images/search.svg" height="15" />
+										</button>
+									</span>
+								</div>
+							</div>
+						</div>
+					</form>
+
+
+
+				</div>
+
+				<div class="table-responsive">
+					<table class="table table-bordered table-striped ">
+						<thead>
+							<tr>
+								<th class="text-center" scope="col">#</th>
+								<th class="text-center" scope="col">Negócio</th>
+								<th class="text-center" scope="col">UF</th>
+								
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="estado : ${estados}">
+								<td class="text-center" th:text="${estado.codigo}"></td>
+								<td class="text-center" th:text="${estado.state}"></td>
+								<td class="text-center" th:text="${estado.ufstate}"></td>
+							<tr>
+								<td scope="row" th:if="${#lists.isEmpty(estados)}">Nenhum
+									estado foi encontrada!</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+
+
+</html>

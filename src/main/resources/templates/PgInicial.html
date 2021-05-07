@@ -1,0 +1,45 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{Layout}">
+<head>
+
+<meta charset="UTF-8" />
+<title>Pagina Inicial</title>
+</head>
+<body>
+	<section layout:fragment="conteudo">
+		<div class="card-body">
+			<input type="hidden" />
+			<div class="container col-8">
+				<div class="row mb-3">
+					<div class="card-header text-center col-12">
+						<b>LELO IMÓVEIS</b>
+					</div>
+				</div>
+				<a href="/home/categorias"> <img
+					src="/images/categorias.png" class="img-home" alt="Categorias">
+				</a> 
+				<a href="/home/negocio/novonegocio"> <img
+					src="/images/negocios.png" class="img-home" alt="Negócios">
+				</a>
+				 <a href="/home/estado/novoestado"> <img src="/images/estados.png"
+					class="img-home" alt="Estados">
+				</a> 
+				<a href="/home/municipio/novomunicipio"> <img
+					src="/images/municipios.png" class="img-home" alt="Municípios">
+				</a> 
+				<a href="/home/bairro/novobairro"> <img src="/images/bairros.png"
+					class="img-home" alt="Bairros">
+				</a>
+				 <a href="/home/imovel/novoimovel"> <img src="/images/imoveis.png"
+					class="img-home" alt="Imóveis">
+				</a> <a href="/home/imovel/imoveis"> </a>
+					
+        
+			</div>
+		</div>
+	</section>
+</body>
+</html>

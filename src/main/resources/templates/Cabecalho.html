@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<div class="container-fluid">
+		<a class="navbar-brand" href="/home"> <img src="/images/logo.png"
+			height="50" class="d-inline-block align-top" alt="Logo">
+		</a>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<div class="btn btn-outline-light nav-item dropdown">
+				<a class="nav-link dropdown-toggle text-success" id="navbarDropdown"
+					data-toggle="dropdown"> Categorias </a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					<a class="dropdown-item" href="/home/categorias">Cadastrar
+						Categoria</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item" href="/home/pesquisarcategorias">Pesquisar
+						Categorias</a>
+				</div>
+			</div>
+			<div class="btn btn-outline-light nav-item dropdown">
+				<a
+					class="nav-link dropdown-toggle me-auto mb-2 mb-lg-0  text-success"
+					id="navbarDropdown" data-toggle="dropdown"> Negócios </a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					<a class="dropdown-item" href="/home/negocio/novonegocio">Cadastrar
+						Negócio</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item" href="/home/negocio/negocios">Pesquisar
+						Negócios</a>
+				</div>
+			</div>
+			<div class="btn btn-outline-light nav-item dropdown">
+				<a
+					class="nav-link dropdown-toggle me-auto mb-2 mb-lg-0  text-success"
+					id="navbarDropdown" data-toggle="dropdown"> Região </a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					<a class="dropdown-item" href="/home/estado/novoestado">Cadastrar
+						Estado</a> <a class="dropdown-item"
+						href="/home/municipio/novomunicipio">Cadastrar Município</a> <a
+						class="dropdown-item" href="/home/bairro/novobairro">Cadastrar
+						Bairro</a>
+
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item"></a> <a class="dropdown-item"
+						href="/home/estado/estados"> Estados</a> <a class="dropdown-item"
+						href="/home/municipio/municipios">Municípios</a> <a
+						class="dropdown-item" href="/home/bairro/bairros"> Bairros</a>
+				</div>
+			</div>
+			
+			<div class="btn btn-outline-light nav-item dropdown">
+				<a
+					class="nav-link dropdown-toggle me-auto mb-2 mb-lg-0  text-success"
+					id="navbarDropdown" data-toggle="dropdown"> Imóveis </a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					<a class="dropdown-item" href="/home/imovel/novoimovel">Cadastrar
+						Imóvel</a>
+					
+				</div>
+			</div>
+			
+			
+		</div>
+	</div>
+</nav>
+</html>

@@ -1,0 +1,117 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{Layout}">
+<head>
+
+<meta charset="UTF-8" />
+<title>Cadastro de Municípios</title>
+</head>
+<body>
+	<section layout:fragment="conteudo">
+
+		<form class="form-horizontal" method="POST" action="/home/municipio"
+			th:object="${municipio}">
+			<div layout:insert="MensagemGeral"></div>
+			<div layout:insert="MensagemErro"></div>
+
+			<div class="card-body">
+				<input type="hidden" th:field="*{codigo}" />
+				<div class="container col-8">
+					<div class="row mb-3">
+						<div class="card-header text-center col-12">
+							<b>Novo Município</b>
+						</div>
+
+					</div>
+
+					<div class="editar">
+						<div class="row mb-3">
+							<label for="nomeMunicipio" class="col-sm-2 col-form-label">Município</label>
+							<div class="col-sm-4">
+								<input type="text" class="form-control" id="nomeMunicipio"
+									name="nomeMunicipio" th:field="*{nomeMunicipio}"
+									th:classappend="${#fields.hasErrors('nomeMunicipio')} ? 'form-control is-invalid'">
+							</div>
+						</div>
+
+
+						<div class="row mb-3">
+							<label for="state" class="col-sm-2 col-form-label">Estado</label>
+							<div class="col-sm-4">
+								<select class="form-control" th:field="*{estado.codigo}">
+									<option th:each="estado : ${estados}"
+										th:value="${estado.codigo}" th:text="${estado.state}"></option>
+								</select>
+							</div>
+						</div>
+
+
+						<div class="row mb-3">
+							<div class="col-sm-offset-2 col-sm-10">
+								<button type="submit" class="btn btn-success">Salvar</button>
+							</div>
+						</div>
+
+						<a class="btn btn-outline-secondary " role="button"
+							aria-pressed="true" href="/home/estado/novoestado" rel="tooltip"
+							data-placement="top" title="Cadastrar Estado">Estado <img
+							src="/images/back.svg" height="15">
+						</a> <a class="btn btn-outline-primary btnPositionBairro "
+							role="button" aria-pressed="true" href="/home/bairro/novobairro"
+							rel="tooltip" data-placement="top" title="Cadastrar Bairro">Bairro
+							<img src="/images/next.svg" height="15">
+						</a>
+					</div>
+					<!-- CÓDIGO PARA MOSTRAR AS INFORMAÇÕES -->
+					<div class="card card-default">
+						<div class="card-header">
+							<div class="crearfix">
+								<h1 class="card-title stretched-titulo">Lista de Municípios</h1>
+								<a class="btn btn-link" href="/home/municipio/municipios"
+									style="position: relative;">Pesquisa de Municípios</a>
+							</div>
+						</div>
+
+
+
+						<div class="table-responsive">
+							<table class="table table-bordered table-striped ">
+								<thead>
+									<tr>
+										<th class="text-center" scope="col">Código</th>
+										<th class="text-center" scope="col">Município</th>
+										<th class="text-center" scope="col">Estado</th>
+
+										<th scope="col"></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="municipio : ${municipios}">
+										<td class="text-center" th:text="${municipio.codigo}"></td>
+										<td class="text-center" th:text="${municipio.nomeMunicipio}"></td>
+										<td class="text-center" th:text="${municipio.estado.state}"></td>
+
+										<td class="text-center"><a class="btn btn-primary"
+											th:href="@{/home/municipio/novomunicipio/{codigo}(codigo=${municipio.codigo})}"
+											rel="tooltip" data-placement="top" title="Editar"
+											th:field="*{nomeMunicipio}"> <img
+												src="/images/pencil-square.svg" height="15">
+										</a> <a class="btn btn-danger" data-toggle="modal"
+											data-target="#confirmacaoExclusaoMunicipio"
+											th:attr="data-codigo=${municipio.codigo}, data-nome=${municipio.nomeMunicipio}"
+											rel="tooltip" data-placement="top" title="Excluir"> <img
+												src="/images/trash-fill.svg" height="15">
+										</a></td>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+		<div layout:insert="Municipios/ExclusaoMunicipio"></div>
+	</section>
+</body>
+</html>

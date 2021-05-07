@@ -1,0 +1,98 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{Layout}">
+<head>
+
+<meta charset="UTF-8" />
+<title>Cadastro de Quartos</title>
+</head>
+<body>
+	<section layout:fragment="conteudo">
+
+		<form class="form-horizontal" method="POST" action="/home/quarto/"
+			th:object="${quarto}">
+			<div layout:insert="MensagemGeral"></div>
+			<div layout:insert="MensagemErro"></div>
+
+			<div class="card-body">
+				<input type="hidden" th:field="*{codigo}" />
+				<div class="container col-8">
+					<div class="row mb-3">
+						<div class="card-header text-center col-12">
+							<b>Novo Quarto</b>
+						</div>
+
+					</div>
+
+					<div class="editar">
+						<div class="row mb-3">
+							<label for="qntd" class="col-sm-2 col-form-label">Novo
+								Quarto</label>
+							<div class="col-sm-6">
+								<input type="text" class="form-control" id="qntd" name="qntd"
+									th:field="*{qntd}"
+									th:classappend="${#fields.hasErrors('qntd')} ? 'form-control is-invalid'">
+							</div>
+						</div>
+
+
+						<div class="row mb-3">
+							<div class="col-sm-offset-2 col-sm-10">
+								<button type="submit" class="btn btn-success">Salvar</button>
+							</div>
+						</div>
+
+
+					</div>
+
+					<!-- CÓDIGO PARA MOSTRAR AS INFORMAÇÕES -->
+					<div class="card card-default">
+						<div class="card-header">
+							<div class="crearfix">
+								<h1 class="card-title stretched-titulo">Quantidade de
+									quartos</h1>
+								<a class="btn btn-link" href="/home/quarto/quartos"
+									style="position: relative;">Pesquisa de Quartos</a>
+							</div>
+						</div>
+
+
+
+						<div class="table-responsive">
+							<table class="table table-bordered table-striped ">
+								<thead>
+									<tr>
+										<th class="text-center" scope="col">Código</th>
+										<th class="text-center" scope="col">Qntd Quarto</th>
+
+										<th scope="col"></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="quarto : ${quartos}">
+										<td class="text-center" th:text="${quarto.codigo}"></td>
+										<td class="text-center" th:text="${quarto.qntd}"></td>
+
+										<td class="text-center"><a class="btn btn-primary"
+											th:href="@{/home/quarto/cadquarto/{codigo}(codigo=${quarto.codigo})}"
+											rel="tooltip" data-placement="top" title="Editar"
+											th:field="*{qntd}"> <img src="/images/pencil-square.svg"
+												height="15">
+										</a> <a class="btn btn-danger" data-toggle="modal"
+											data-target="#confirmacaoExclusaoQuarto"
+											th:attr="data-codigo=${quarto.codigo}, data-quarto=${quarto.qntd}"
+											rel="tooltip" data-placement="top" title="Excluir"> <img
+												src="/images/trash-fill.svg" height="15">
+										</a></td>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+		<div layout:insert="Quartos/ExclusaoQuartos"></div>
+	</section>
+</body>
